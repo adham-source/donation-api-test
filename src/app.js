@@ -20,7 +20,12 @@ const registerRouter = require("./routers/register")
 const productRouter = require("./routers/search")
 
 app.get("/", (req, res) => {
-  res.send("Welcome! This is an API.")
+  res.send(`
+  <h1>Welcome! Donation API.</h1>
+  <p>This is a donation API that lets you add donations to the database.</p>
+  <p>You can use the <a href="/register">/register</a> endpoint to register.</p>
+  <p>You can use the <a href="/donate">/donation</a> endpoint to add donations.</p>
+  `)
 })
 app.use(donateRouter)
 app.use(registerRouter)
