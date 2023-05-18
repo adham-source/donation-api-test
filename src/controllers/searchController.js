@@ -18,11 +18,10 @@ const Product = require("../models/search")
 const getProductByKey = async function (req, res) {
   try {
     const { key } = req.params
-    const data = await Product.findOne({ DrugName: { $regex: key } })
+    const data = await Product.find({ DrugName: { $regex: key } })
     if (!data) {
       return res.status(404).send("Unable to find product")
     }
-    console.log(data)
     return res.send(data)
   } catch (error) {
     res.status(400).send(error)
