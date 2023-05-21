@@ -65,12 +65,12 @@ const putFindAndUpdate = async function (req, res) {
   try {
     // const DrugName = req.params.DrugName
     const _id = req.params.id
-    const product = await Product.findOneAndUpdate(_id, req.body, {
+    const product = await Product.findByIdAndUpdate(_id, req.body, {
       new: true,
       runValidators: true,
     })
     if (!product) {
-      return res.status(404).send("No User Founded")
+      return res.status(404).send("No Product Founded")
     }
     res.status(200).send(product)
   } catch (error) {
@@ -79,11 +79,10 @@ const putFindAndUpdate = async function (req, res) {
 }
 
 // delete product
-
 const deletProductById = async function (req, res) {
   try {
     const _id = req.params.id
-    const product = await Product.findOneAndDelete(_id)
+    const product = await Product.findByIdAndDelete(_id)
     if (!product) {
       return res.status(404).send("UNABLE TO FIND THiS Drug")
     }
